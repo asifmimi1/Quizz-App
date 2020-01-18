@@ -50,7 +50,12 @@ class ViewController: UIViewController {
             questionLabel.text = puzzleQuestions.items[questionNumber].questionText
         }
         else{
-            questionNumber = 0
+            let alert = UIAlertController(title: "End", message: "You have finished the quiz!", preferredStyle: .alert)
+            let restart = UIAlertAction(title: "Restart", style: .default) { (UIAlertAction) in
+                self.startOver()
+            }
+            alert.addAction(restart)
+            present(alert, animated: true, completion: nil)
         }
     
     }
