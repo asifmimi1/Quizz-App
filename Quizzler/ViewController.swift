@@ -1,8 +1,5 @@
 //  ViewController.swift
 //  Quizzler
-//
-//  Created by Angela Yu on 25/08/2015.
-
 
 import UIKit
 
@@ -11,16 +8,16 @@ class ViewController: UIViewController {
     var puzzleQuestions = AllQuestions()
     var chosenAnswere : Bool = false
     var questionNumber : Int = 0
+    var score : Int = 0
     
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
-    @IBOutlet var progressBar: UIView!
+    @IBOutlet weak var progressBAR: UIView!
     @IBOutlet weak var progressLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let firstQuestion = puzzleQuestions.items[0]
-        questionLabel.text = firstQuestion.questionText
+        nextQuestion()
     }
 
 
@@ -40,7 +37,9 @@ class ViewController: UIViewController {
     
     
     func updateUI() {
-      
+        scoreLabel.text = ("Score: \(score)")
+        progressLabel.text = ("Question: \(questionNumber + 1)/13")
+        progressBAR.frame.size.width = (view.frame.size.width / 13) * CGFloat(questionNumber + 1)
     }
     
 
@@ -48,6 +47,8 @@ class ViewController: UIViewController {
         
         if questionNumber <= 12{
             questionLabel.text = puzzleQuestions.items[questionNumber].questionText
+            updateUI()
+            
         }
         else{
             let alert = UIAlertController(title: "End", message: "You have finished the quiz!", preferredStyle: .alert)
@@ -56,6 +57,11 @@ class ViewController: UIViewController {
             }
             alert.addAction(restart)
             present(alert, animated: true, completion: nil)
+            
+            score = 0
+            questionNumber = 0
+            scoreLabel.text = ("Score: \(score)")
+            progressLabel.text = ("Question: \(questionNumber)")
         }
     
     }
@@ -64,6 +70,7 @@ class ViewController: UIViewController {
     func checkAnswer() {
         let correctAnswere = puzzleQuestions.items[questionNumber].decision
         if correctAnswere == chosenAnswere{
+            score += 1
             print("Wallah!")
         }
         else if correctAnswere != chosenAnswere{
@@ -74,7 +81,8 @@ class ViewController: UIViewController {
     
     
     func startOver() {
-       
+     questionNumber = 0
+     nextQuestion()
     }
     
 

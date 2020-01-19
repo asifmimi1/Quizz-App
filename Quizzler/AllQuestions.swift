@@ -23,7 +23,8 @@ class AllQuestions {
         items.append(Questions(text: "A right triangle can never be equilateral", answere: true))
         items.append(Questions(text: "Snow White’s seven dwarfs all worked as lumberjacks", answere: false))
         items.append(Questions(text: "No bird can fly backwards", answere: false))
-//        items.append(Questions(text: "<#T##String#>", answere: <#T##Bool#>))
-//        items.append(Questions(text: "<#T##String#>", answere: <#T##Bool#>))
+        //        items.append(Questions(text: "<#T##String#>", answere: <#T##Bool#>))
+        //        items.append(Questions(text: "<#T##String#>", answere: <#T##Bool#>))
     }
 }
+
