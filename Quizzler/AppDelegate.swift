@@ -1,7 +1,5 @@
 //  AppDelegate.swift
 //  Quizzler
-//
-//  Created by Angela Yu on 25/08/2015.
 
 import UIKit
 

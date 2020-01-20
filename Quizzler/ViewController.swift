@@ -72,9 +72,11 @@ class ViewController: UIViewController {
         if correctAnswere == chosenAnswere{
             score += 1
             print("Wallah!")
+            ProgressHUD.showSuccess("Correct")
         }
         else if correctAnswere != chosenAnswere{
             print("Noh!")
+            ProgressHUD.showSuccess("Wrong")
         }
         
     }
